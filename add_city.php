@@ -1,3 +1,4 @@
+<!--add city-->
 <?php
 include('header.php');
 include_once("connect.php");

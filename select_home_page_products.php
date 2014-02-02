@@ -3,6 +3,10 @@
 
 <?php include('header.php'); ?>
 <?php
+//$city = $_POST['city'];
+//include_once('connect.php');
+
+
 
 require_once './xml/my-controller.php';
 $product = new Users();
@@ -45,6 +49,9 @@ $pro_details = $product->homepageproducts($data);
                     <tr>
                         <th>Sl No</th>
                         <th>Product</th>
+                        <!--<th>Product</th>
+                        <th>Price</th>-->
+                        <!--<th>Actions</th>-->
                         <th>Select</th>
                     </tr>
                 </thead>
@@ -58,12 +65,20 @@ $pro_details = $product->homepageproducts($data);
 
                             <td class="center"><?php echo $prod['prod_name']; ?></td>
 
+
+                                            <!--<td class="center">
+                                                <a class="btn btn-success" href="#">
+                                                    <i class="icon-zoom-in icon-white"></i>  
+                                                    View                                            
+                                                </a>
+
+                                            </td>-->
                             <td>
                                 <div class="control-group">
 
                                     <div class="controls">
                                         <label class="checkbox inline">
-                                            <input type="checkbox" id="inlineCheckbox1" value="option1" />
+                                            <input type="checkbox" id="inlineCheckbox1" value="option1" checked>
                                         </label>
 
                                     </div>
@@ -75,7 +90,7 @@ $pro_details = $product->homepageproducts($data);
                         </tr>
                     <?php } ?>
                     <tr>
-                        <td><?php echo $count = $count + 1; ?></td>
+                        <td><?php echo $count=$count+1; ?></td>
                         <?php
                         if (!isset($_SESSION)) {
                             session_start();
@@ -89,15 +104,15 @@ $pro_details = $product->homepageproducts($data);
                         if (isset($_SESSION['ids'])) {
                             $_GET['id'] = $_SESSION['ids'];
                         }
+                        
+                         $clientsquery = "select * from tbl_product where prod_id_pk= '$_GET[id]' order by prod_id_pk desc";
+                         $clientrs = mysql_query($clientsquery);
 
-                        $clientsquery = "select * from tbl_product where prod_id_pk= '$_GET[id]' order by prod_id_pk desc";
-                        $clientrs = mysql_query($clientsquery);
-
-                        $rowset = mysql_num_rows($clientrs);
-                        if ($rowset > 0) {
-                            while ($clientdata = mysql_fetch_array($clientrs)) {
-                                ?>
-                                <td>
+                    $rowset = mysql_num_rows($clientrs);
+                     if ($rowset > 0) {
+                        while ($clientdata = mysql_fetch_array($clientrs)) {
+                            ?>
+                         <td>
                                     <?php
                                     if ($clientdata['prod_name'] != "") {
                                         echo $clientdata['prod_name'];
@@ -107,24 +122,21 @@ $pro_details = $product->homepageproducts($data);
                                             <?php
                                             echo "-- !NO DATA! --";
                                         }
-                                        ?></p>	
-                                </td>
-                                <?php
-                            }
-                        }
-                        ?>
-                        <td>
-                            <div class="control-group">
+                                        ?></p>				  </td>
+                        <?php }
+                     }?>
+                           <td>
+                                <div class="control-group">
 
-                                <div class="controls">
-                                    <label class="checkbox inline">
-                                        <input type="checkbox" id="inlineCheckbox1" value="option1">
-                                    </label>
+                                    <div class="controls">
+                                        <label class="checkbox inline">
+                                            <input type="checkbox" id="inlineCheckbox1" value="option1">
+                                        </label>
 
+                                    </div>
                                 </div>
-                            </div>
 
-                        </td>
+                            </td>
 
                     </tr>
                 </tbody>

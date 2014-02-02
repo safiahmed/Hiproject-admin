@@ -58,7 +58,7 @@ if (isset($_GET['action'])) {
                     <tr>
                         <th>Sl no</th>
                         <th>Name</th>
-                        <th>Email</th>
+                       <!-- <th>Email</th>-->
                         <th>Product Name</th>
                         <th>Review Title</th>
                         <th>Rating</th>
@@ -112,9 +112,9 @@ if (isset($_GET['action'])) {
                                             echo "-- !NO DATA! --";
                                         }
                                         ?></p>				  </td>
-                                <td align="left">
+                               <!-- <td align="left">
                                     <?php
-                                    if (($terstidata['email'] != "")) {
+                                   /* if (($terstidata['email'] != "")) {
                                         echo $terstidata['email'];
                                     } else {
                                         ?>
@@ -122,7 +122,7 @@ if (isset($_GET['action'])) {
                                             <?php
                                             echo "-- !NO DATA! --";
                                         }
-                                        ?></p>				  </td>
+                                      */  ?></p>				  </td>-->
                                 <td align="left">
                                     <?php
                                     if (($terstidata['prod_name'] != "")) {
@@ -145,7 +145,7 @@ if (isset($_GET['action'])) {
                                             <?php
                                             echo "-- !NO DATA! --";
                                         }
-                                        ?></p>				  </td>
+                                       ?></p>				  </td>
 
                                 <td align="left">
                                     <?php

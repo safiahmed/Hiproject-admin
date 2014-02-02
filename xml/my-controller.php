@@ -10,12 +10,12 @@ class Users {
             $host = "localhost",
             $name = "magnum_hiprojects",
             $user = "root",
-            $pass = "safipassword";
+            $pass = "";
 
     public function __construct() {
         $this->mysqli = mysqli_connect("$this->host", "$this->user", "$this->pass", "$this->name");
         //$this->xml = simplexml_load_file('my-model.xml');
-        $this->xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . '/work/Hiadmin2101/xml/HiProjectsAdmin.xml');
+        $this->xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . '/hi-admin/xml/HiProjectsAdmin.xml');
         if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();

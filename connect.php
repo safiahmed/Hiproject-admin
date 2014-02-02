@@ -3,7 +3,7 @@
 //$dbhost							= "75.126.26.119";
 $dbhost							= "localhost";
 $dbuser							= "root";
-$dbpass							= "safipassword";
+$dbpass							= "";
 //$dbuser							= "lexpioneer";
 //$dbpass							= "lex@pioneers";
 $dbname							= "magnum_hiprojects";

@@ -45,17 +45,17 @@ include_once("connect.php");
                     <!--------------------->
                     <?php
                     if (isset($_GET["confirm"]) == "ok") {
-                        $sql = "update register set status=0 where reg_id=" . $_GET['id'] . "";
+                        $sql = "update tbl_register set status=0 where reg_id=" . $_GET['id'] . "";
                         $clientrs1 = mysql_query($sql);
-                        $clientsquery = "select * from register order by reg_id desc ";
+                        $clientsquery = "select * from tbl_register order by reg_id desc ";
                         $clientrs = mysql_query($clientsquery);
                     } elseif (isset($_GET["con"]) == "ok") {
-                        $sql = "update register set status=1 where reg_id=" . $_GET['id'] . "";
+                        $sql = "update tbl_register set status=1 where reg_id=" . $_GET['id'] . "";
                         $clientrs1 = mysql_query($sql);
-                        $clientsquery = "select * from register order by reg_id desc ";
+                        $clientsquery = "select * from tbl_register order by reg_id desc ";
                         $clientrs = mysql_query($clientsquery);
                     } else {
-                        $clientsquery = "select * from register order by reg_id desc ";
+                        $clientsquery = "select * from tbl_register order by reg_id desc ";
                         $clientrs = mysql_query($clientsquery);
                     }
 
