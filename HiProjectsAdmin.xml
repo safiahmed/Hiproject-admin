@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<AdminUser>
+    <editpassADMIN>update tbl_adminuser set admin_password=? where admin_name=?;</editpassADMIN>
+    <SelectADMIN>select admin_user,admin_password from tbl_adminuser where admin_user=? and admin_password=?</SelectADMIN>
+</AdminUser>
+
+<Category>
+    <addCategory>insert into tbl_category(cat_name,cat_desc) values(?,?)</addCategory>
+    <SelectCategory>select cat_name,cat_desc from tbl_category</SelectCategory>
+    <updateCategory>update tbl_category set cat_desc=? where cat_name=?</updateCategory>
+</Category>
+
+<Product>
+    <insertProduct>insert into tbl_product(prod_name,prod_over_view,prod_thumbimage,prod_org_price,prod_deal,model_no,prod_image1,prod_image2,prod_image3,prod_image4,cat_id_fk,download_file,prod_videolink,project_video_desc,project_abstract,project_blockdiagram) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)</insertProductkitcontent>
+    <selectProductt>select prod_name,prod_over_view,prod_thumbimage,prod_org_price,prod_deal,model_no,prod_image1,prod_image2,prod_image3,prod_image4,cat_id_fk,download_file,prod_videolink,project_video_desc,project_abstract,project_blockdiagram from tbl_product</selectProduct>
+    <updateProduct>update tbl_product set prod_name=?,prod_over_view=?,prod_thumbimage=?,prod_org_price=?,prod_deal=?,model_no=?,prod_image1=?,prod_image2=?,prod_image3=?,prod_image4=?,cat_id_fk=?,download_file=?,prod_videolink=?,project_video_desc=?,project_abstract=?,project_blockdiagram=? where prod_id_pk=?</updateProduct>
+    <archiveProduct>update tbl_product set prod_status=0 where prod_id_pk=?</archiveProduct>
+</Product>
+
+
+<homepageproducts>
+    <>
+    <>
+</homepageproducts>
+
+
+<Productkittype>
+    <insertProductkittype>insert into tbl_productkittype(type_name,type_price,prod_id_fk) values(?,?,?)</insertProductkittype>
+    <selectProductkittype>select type_name,type_price from tbl_productkittype where prod_id_fk=?</selectProductkittype>
+    <updateProductkittype>update tbl_productkittype set type_name=?,type_price=? where prod_id_fk=?</updateProductkittype>
+</Productkittype>
+
+<Productkitcontent>
+    <insertProductkitcontent>insert into tbl_productkitcontent(content_name,content_type) values(?,?)</insertProductkitcontent>
+    <selectProductkitcontent>select content_name,content_type from tbl_productkitcontent</selectProductkitcontent>
+    <updateProductkitcontent>update tbl_productkitcontent set content_name=?,content_type=? where prkc_id_pk=?</updateProductkitcontent>
+</Productkitcontent>
+
+<Productkitcontenttype>
+    <insertProductkitcontenttype>insert into tbl_productkitcontenttype(prkc_id_fk,yes_no) values(?,?)</insertProductkitcontenttype>
+    <selectProductkitcontenttype>select prkc_id_fk,yes_no from tbl_productkitcontenttype</selectProductkitcontenttype>
+    <updateProductkitcontenttype>update tbl_productkitcontenttype set yes_no=? where prkc_id_fk=?</updateProductkitcontenttype>
+</Productkitcontenttype>
+
+<ProductReview>
+    <selectProductReview>select r_name,r_collegename,r_course,r_courseyearfrom,r_courseyearto,r_review,r_rate_value,r_rate_price,r_rate_quality,prod_name from tbl_productreview,tbl_product where prod_id_fk=prod_id_pk</selectproductReview>
+    <selectallReview>select r_name,r_collegename,r_course,r_courseyearfrom,r_courseyearto,r_review,r_rate_value,r_rate_price,r_rate_quality,prod_name from tbl_productreview</selectallReview>
+</ProductReview>
+
+
+<ContactUs>
+    <SelectContactUs>select con_name,con_email,con_phone,con_comment,website from tbl_contactus</SelectContactUs>
+</ContactUs>
+
+<FAQ>
+    <addFAQ>insert into tbl_faq(faq_question,faq_answers) values(?,?)</addFAQ>
+    <SelectFAQ>select faq_question,faq_answers from tbl_faq</SelectFAQ>
+    <updateFAQ>update tbl_faq set faq_question=?,faq_answers=?where faq_id_pk=?</SelectFAQ>
+</FAQ>
+
+<Feedback>
+    <SelectFeedback>select feed_name,feed_collegename,feed_email,options,proj_name,feed_message,advice_message,price_review,quality_review,value_review from tbl_feedback</SelectFeedback>
+</Feedback>
+
+<NetDealerCity>
+    <addNetDealerCity>insert into tbl_netdealer_city(ndcity_name,ndstate_id_fk,ndcity_address) values(?,?,?,?)</addNetDealerCity>
+    <SelectNetDealerCity>select ndcity_name,ndstate_id_fk,ndcity_address from tbl_netdealer_city</SelectNetDealerCity>
+</NetDealerCity>
+
+<NetDealerState>
+    <addNetDealerState>insert into tbl_netdealer_state(ndstate_name) values(?)</addNetDealerState>
+    <SelectNetDealerState>select ndstate_name from tbl_netdealer</SelectNetDealerState>
+</NetDealerState>
+
+
+<Orders>
+    <SelectOrder>select order_no,order_date,order_worth from tbl_order where order_date=?</SelectOrder>
+    <SelectOrderDetails>select prod_name,prod_id_fk,prod_qty,prod_org_price,prod_tot_price where ord_id_fk=?</SelectOrderDetails>
+</Orders>
+
+
+
+
+
+ 
+
