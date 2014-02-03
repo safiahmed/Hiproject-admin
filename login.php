@@ -17,12 +17,13 @@ if(!isset($_SESSION))
   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC)
   if (sizeof($rows)==1) {
 	  $_SESSION['user']=$data[1];
+	  // Man, if you've already included header.php; you won't be able to send a Location: header as you've already sent the <!DOCTYPE>, so there's headers that have already been sent.
 	  header("Location:index.php");
 	  exit;
   }
   else{?>
 	     
-						<script type="text/javascript">
+					    <script type="text/javascript">
 					    alert("Incorrect username or password");
 					    </script>
 	     		
