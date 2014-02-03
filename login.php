@@ -10,22 +10,20 @@ if(!isset($_SESSION))
   include("admin_sql.php");
   mysql_select_db("magnum_hiprojects");
   
-  
-  if(isset($_POST['login']))
-  {
-  if($_POST['password']!=""){
-  $query="select * from tbl_adminuser where admin_name = '".$_POST['username']."' and admin_password = '".$_POST['password']."'";		
-	$row=countrows($query); 
-	$data=getrow($query);
-	if($row > 0){
+  // Here is an example of PDO code you can use that is more secure than using $_POST variables in your SQL string
+  if(isset($_POST['login']) && $_POST['password']!="") {
+  $stmt = $dbh->prepare("select * from tbl_adminuser where admin_name = :user and admin_password = :pass";);
+  $stmt->execute(array(":user" => $_POST['username']), ":pass" => $_POST['password'])
+  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC)
+  if (sizeof($rows)==1) {
 	  $_SESSION['user']=$data[1];
-	  //echo $_SESSION['user'];	  
+	  // Man, if you've already included header.php; you won't be able to send a Location: header as you've already sent the <!DOCTYPE>, so there's headers that have already been sent.
 	  header("Location:index.php");
 	  exit;
-	}
-	else{?>
+  }
+  else{?>
 	     
-						<script type="text/javascript">
+					    <script type="text/javascript">
 					    alert("Incorrect username or password");
 					    </script>
 	     		
@@ -33,7 +31,6 @@ if(!isset($_SESSION))
 							<?php
 	   //$message="<tr><td align='center'><font color='red' size='2'><p>Warning! Incorrect Password, Please re-enter correct Password</p></td></tr>";
 	}
-  }
   }
 ?>
 
